@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import java.math.BigDecimal;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -44,6 +45,9 @@ public class PointUsageDetail {
     /** 지금까지 사용취소된 누적 금액 */
     @Column(nullable = false, precision = 19, scale = 0)
     private BigDecimal cancelledAmount;
+
+    @Version
+    private Long version;
 
     private PointUsageDetail(Long useTransactionId, Long pointTransactionId, BigDecimal amountUsed) {
         this.useTransactionId = useTransactionId;
